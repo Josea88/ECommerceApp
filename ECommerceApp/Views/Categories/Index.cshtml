@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ECommerceApp.Models.Category>
+
+@{
+    ViewBag.Title = "Daftar Kategori";
+}
+
+<h2>Daftar Kategori</h2><br />
+
+@Html.Raw(ViewBag.Pesan)
+<br />
+@using (Html.BeginForm("Search", "Categories", FormMethod.Get))
+{
+  
+    <input type="text" name="txtSearch" />
+    <button type="submit" class="btn btn-success">Search</button>
+}
+<hr />
+<br />
+
+@Html.ActionLink("Tambah Kategori","Create")<br />
+
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>Nama Kategori</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach(var cat in Model)
+    {
+        <tr>
+            <td>@cat.CategoryID</td>
+            <td>@cat.CategoryName</td>
+            <td>@Html.ActionLink("edit","Edit", new { id=cat.CategoryID })</td>
+            <td>@Html.ActionLink("delete","Delete",new { id=cat.CategoryID },
+               htmlAttributes:new { onclick="return confirm('Apakah anda yakin akan mendelete data ini ?');" })</td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,74 @@
+﻿@model ECommerceApp.ViewModels.BookVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>Detail Buku</h4>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            &nbsp;
+        </dt>
+        <dd><img src="~/Content/Images/@Html.DisplayFor(model=>model.CoverImage)" width="150px" /></dd>
+
+        <dt><br /></dt>
+        <dd><br /></dd>
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>Pengarang</dt>
+        <dd>
+            @Model.FirstName&nbsp;@Model.LastName 
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublicationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublicationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Publisher)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Publisher)
+        </dd>
+
+        <dt>&nbsp;</dt>
+        <dd><a href="~/ShoppingCarts/AddToCart/@Html.DisplayFor(model=>model.BookID)" class="btn btn-success">Add To Cart</a></dd>
+    </dl>
+</div>

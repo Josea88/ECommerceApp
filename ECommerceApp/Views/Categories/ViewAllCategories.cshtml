@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ECommerceApp.ViewModels.CategoryVM>
+
+@{
+    ViewBag.Title = "ViewAllCategories";
+}
+<br />
+<h4>Daftar Kategori</h4>
+<br />
+
+@using (Html.BeginForm("Search", "Categories", FormMethod.Get))
+{
+   
+    <input type="text" name="txtSearch" />
+    <button type="submit" class="btn btn-success">Search</button>
+}
+<hr />
+
+
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nama Kategori</th>
+            <th></th>
+            <th></th>
+        </tr>
+@foreach (var cat in Model)
+{
+        <tr>
+            <td>@cat.CategoryID</td>
+            <td>@cat.CategoryName</td>
+            <td>@Html.ActionLink("edit", "Edit", new { id = cat.CategoryID })</td>
+            <td>
+                @Html.ActionLink("delete", "Delete", new { id = cat.CategoryID },
+               htmlAttributes: new { onclick = "return confirm('Apakah anda yakin akan mendelete data ini ?');" })
+            </td>
+        </tr>
+        }
+        <a href="~/Categories/Index" class="btn btn-success btn-m">Back</a>
+        </table>
+
+
+
+
+
+

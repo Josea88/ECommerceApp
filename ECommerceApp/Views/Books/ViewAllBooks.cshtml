@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ECommerceApp.ViewModels.BookVM>
+
+@{
+    ViewBag.Title = "ViewAllBooks";
+}
+<br />
+<h4>Daftar Buku</h4>
+<br />
+
+@using (Html.BeginForm("Search", "Books", FormMethod.Get))
+{ 
+    <label for="selectKriteria">Pilih kriteria:</label>
+    <select name="selectKriteria">
+        <option value="Title" selected="selected">Judul</option>
+        <option value="Author">Pengarang</option>
+    </select>
+    <input type="text" name="txtSearch" />
+    <button type="submit" class="btn btn-success">Search</button>
+}
+<hr />
+
+@foreach (var item in Model)
+{
+    <div class="col-md-4">
+        <div class="col-md-4">
+            <img src="~/Content/Images/@item.CoverImage" width="80" />
+           
+        </div>
+        <div class="col-md-8">
+            <a href="/Books/Details/@item.BookID"><strong>@item.Title</strong></a><br />
+            Tahun Terbit: @item.PublicationDate.Value.Year<br />
+            Pengarang: @item.FirstName&nbsp;@item.LastName<br />
+            Harga: Rp.@item.Price.ToString("N0")<br />
+
+            <a href="~/ShoppingCarts/AddToCart/@item.BookID" class="btn btn-success btn-xs">Add To Cart</a>
+        </div>
+    </div>
+}
+
+

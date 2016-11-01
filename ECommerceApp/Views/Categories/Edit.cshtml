@@ -1,0 +1,17 @@
+﻿@model ECommerceApp.Models.Category
+
+@{
+    ViewBag.Title = "Edit Kategori";
+}
+
+<h2>Edit Kategori</h2><br />
+
+<form method="post" action="/Categories/Edit/@Model.CategoryID">
+    <div class="form-group">
+        <label for="CategoryName">Category Name :</label>
+        <input type="text" class="form-control" value="@Model.CategoryName" 
+               name="CategoryName" placeholder="Category Name">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
